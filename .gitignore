@@ -1,0 +1,15 @@
+dist/
+deploy_versions/
+.temp/
+.rn_temp/
+node_modules/
+.DS_Store
+.swc
+*.local
+
+# release 产物（npm run release:android 输出，不入库）
+release/
+
+# 壳工程构建产物（由 build:rn:android 写入，勿入库）
+native-shell/android/app/src/main/assets/
+native-shell/android/app/src/main/res/**/node_modules_*
