@@ -1,0 +1,20 @@
+.index {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+
+  .env {
+    font-size: 28px;
+    color: #666;
+  }
+
+  .btn {
+    font-size: 30px;
+  }
+
+  .result {
+    font-size: 26px;
+    color: #07c160;
+  }
+}
