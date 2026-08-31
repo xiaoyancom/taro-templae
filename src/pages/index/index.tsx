@@ -29,6 +29,16 @@ export default function Index() {
     navigateTo('/pages/detail/index', { id: '1001', name: '张三' })
   }
 
+  // 演示：进入 AI 聊天页（DeepSeek 风格）
+  const goChat = () => {
+    navigateTo('/pages/chat/index')
+  }
+
+  // 演示：进入 NutUI 组件演示页
+  const goNutui = () => {
+    navigateTo('/pages/nutui-demo/index')
+  }
+
   // 演示：存储读写 + 60s 过期
   const demoStorage = () => {
     setStorage('demo_user', { name: '张三', age: 18 }, 60 * 1000)
@@ -57,9 +67,11 @@ export default function Index() {
         当前环境：{isWeapp ? '微信小程序' : isH5 ? 'H5' : isRN ? 'App' : '未知'}
       </Text>
       <Button className='btn' onClick={goDetail}>1. 跳转详情页（带参）</Button>
-      <Button className='btn' onClick={demoStorage}>2. 存储读写（60s 过期）</Button>
-      <Button className='btn' onClick={demoLoading}>3. loading + toast</Button>
-      <Button className='btn' onClick={demoEvent}>4. 发布事件（详情页接收）</Button>
+      <Button className='btn' onClick={goChat}>2. 进入 AI 聊天页</Button>
+      <Button className='btn' onClick={goNutui}>3. NutUI 组件演示</Button>
+      <Button className='btn' onClick={demoStorage}>4. 存储读写（60s 过期）</Button>
+      <Button className='btn' onClick={demoLoading}>5. loading + toast</Button>
+      <Button className='btn' onClick={demoEvent}>6. 发布事件（详情页接收）</Button>
       {stored ? <Text className='result'>存储读取：{stored}</Text> : null}
     </View>
   )

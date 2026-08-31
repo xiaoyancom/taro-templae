@@ -1,0 +1,419 @@
+/* ============ 全局色板（提取自 DeepSeek 官方页面 computed style） ============ */
+$primary: #3964fe;            // 品牌蓝（实测 rgb(57,100,254)）
+$primary-muted: #edf3fe;      // 选中浅蓝（实测 rgb(237,243,254)）
+$text-main: #0f1115;          // 主文字（实测 rgb(15,17,21)）
+$text-sub: #61666b;           // 次要文字（实测 rgb(97,102,107)）
+$text-weak: #a6abb1;          // 弱化文字（占位/免责）
+$border: rgba(0, 0, 0, 0.1);  // 细边框（实测 1px solid rgba(0,0,0,0.1)）
+$bg-page: #ffffff;
+$bg-muted: #f2f3f5;           // 浅灰底（徽标/按钮）
+
+/* ============ 聊天页 ============ */
+.chat-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: $bg-page;
+  overflow: hidden;
+}
+
+/* --- 顶部导航（自定义导航） --- */
+.chat-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 96px;
+  background: $bg-page;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+
+    .nav-icon-btn {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 8px;
+    }
+
+    .nav-title {
+      font-size: 34px;
+      font-weight: 600;
+      color: $text-main;
+      max-width: 320px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+
+    .nav-icon-btn {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 16px;
+    }
+  }
+}
+
+/* --- 消息流（实测聊天区底色 #F6F7F9） --- */
+.chat-body {
+  flex: 1;
+  overflow: hidden;
+  background: #f6f7f9;
+}
+
+.msg-list {
+  padding: 24px 32px 40px;
+}
+
+.msg-item {
+  margin-bottom: 48px;
+}
+
+/* 用户消息：右侧浅蓝气泡（实测 bg #EDF3FE、radius 22px、padding 10px 16px） */
+.msg-user {
+  display: flex;
+  justify-content: flex-end;
+
+  .bubble {
+    max-width: calc(100% - 176px);
+    background: $primary-muted;
+    border-radius: 44px;
+    padding: 20px 32px;
+    font-size: 32px;
+    line-height: 48px;
+    color: $text-main;
+    word-break: break-all;
+  }
+}
+
+/* AI 消息：无气泡左对齐（实测正文 16px/28px、头部 14px #61666B 高 34px） */
+.msg-ai {
+  .ai-header {
+    display: flex;
+    align-items: center;
+    height: 68px;
+    font-size: 28px;
+    color: $text-sub;
+
+    > text {
+      margin-left: 8px;
+    }
+
+    .ai-pages {
+      margin-left: 16px;
+      color: $primary;
+    }
+  }
+
+  .ai-content {
+    display: block;
+    margin-top: 20px;
+    font-size: 32px;
+    line-height: 56px;
+    color: $text-main;
+    word-break: break-all;
+  }
+
+  .ai-actions {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+
+    .act-item {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 32px;
+    }
+
+    .act-pages {
+      margin-left: auto;
+      font-size: 24px;
+      color: $text-sub;
+      background: $bg-muted;
+      border-radius: 999px;
+      padding: 8px 24px;
+    }
+  }
+}
+
+/* ============ 首页（无会话欢迎态） ============ */
+.welcome {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 48px 96px;
+
+  /* logo + 标题横排（实测 24px/600，logo 28px 左侧） */
+  .welcome-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 56px;
+
+    .welcome-title {
+      font-size: 48px;
+      font-weight: 600;
+      color: $text-main;
+    }
+  }
+}
+
+/* --- 模式胶囊组（实测：白底 1px 边框、radius 120px、padding 1px、gap 4px） --- */
+.mode-group {
+  display: flex;
+  align-items: stretch;
+  background: $bg-page;
+  border: 1px solid $border;
+  border-radius: 240px;
+  padding: 2px;
+  gap: 8px;
+
+  .mode-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 44px;
+    border-radius: 240px;
+    font-size: 28px;
+    font-weight: 500;
+    color: $text-main;
+    white-space: nowrap;
+
+    &.active {
+      background: $primary-muted;
+      color: $primary;
+    }
+  }
+}
+
+/* ============ 底部输入区 ============ */
+.chat-footer {
+  background: $bg-page;
+  padding: 16px 24px 20px;
+  padding-bottom: calc(20px + env(safe-area-inset-bottom));
+
+  /* 输入外壳（实测：白底、1px 边框、radius 24px、三层柔和阴影） */
+  .composer {
+    display: flex;
+    align-items: flex-end;
+    background: $bg-page;
+    border: 1px solid $border;
+    border-radius: 48px;
+    padding: 12px 12px 12px 16px;
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.02),
+      0 4px 4px rgba(72, 104, 178, 0.01),
+      0 60px 120px rgba(72, 104, 178, 0.03);
+
+    /* 输入框内开关胶囊（实测：34px 高、radius 18px、13px/500；选中 bg #EDF3FE + 蓝字 #3964FE + 边框 #B7C8FE） */
+    .comp-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      height: 68px;
+      padding: 0 20px;
+      border-radius: 36px;
+      border: 1px solid $border;
+      font-size: 26px;
+      font-weight: 500;
+      color: $text-main;
+      flex-shrink: 0;
+
+      &.on {
+        background: $primary-muted;
+        color: $primary;
+        border-color: #b7c8fe;
+      }
+    }
+
+    .attach-btn {
+      width: 68px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .input-textarea {
+      flex: 1;
+      font-size: 32px;
+      line-height: 48px;
+      min-height: 120px;
+      max-height: 240px;
+      padding: 10px 8px;
+      color: $text-main;
+    }
+
+    .send-btn {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: $primary;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 8px;
+      flex-shrink: 0;
+    }
+  }
+
+  .disclaimer {
+    text-align: center;
+    font-size: 24px;
+    color: $text-weak;
+    margin-top: 16px;
+  }
+}
+
+/* ============ 历史会话抽屉 ============ */
+.drawer-mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 520px;
+  background: $bg-page;
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.08);
+
+  .drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 24px 16px;
+
+    .drawer-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 32px;
+      font-weight: 700;
+      color: $primary;
+    }
+
+    .drawer-tools {
+      display: flex;
+
+      .tool {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 16px;
+      }
+    }
+  }
+
+  .new-chat-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 24px 16px;
+    padding: 20px;
+    background: $bg-muted;
+    border-radius: 20px;
+    font-size: 28px;
+    color: $text-main;
+  }
+
+  .drawer-list {
+    flex: 1;
+    overflow: hidden;
+
+    .group {
+      display: block;
+      font-size: 22px;
+      color: $text-weak;
+      padding: 16px 24px 8px;
+    }
+
+    .session-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 22px 24px;
+      border-radius: 12px;
+      margin: 0 12px;
+
+      &.active {
+        background: $primary-muted;
+      }
+
+      .session-title {
+        font-size: 28px;
+        color: $text-main;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  .drawer-user {
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    border-top: 1px solid $border;
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: $primary-muted;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 600;
+      color: $primary;
+      margin-right: 16px;
+    }
+
+    .user-email {
+      flex: 1;
+      font-size: 24px;
+      color: $text-sub;
+    }
+
+    .more {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
