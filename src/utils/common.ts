@@ -40,10 +40,11 @@ export function sleep(ms: number): Promise<void> {
 }
 
 /** 对象转 query 字符串（自动过滤 undefined/null，navigate 内部同样使用） */
-export function queryString(params: Record<string, unknown>): string {
-  const parts = Object.keys(params)
-    .filter((k) => params[k] !== undefined && params[k] !== null)
-    .map((k) => `${encodeURIComponent(k)}=${encodeURIComponent(String(params[k]))}`)
+export function queryString(params?: Record<string, unknown>): string {
+  const safeParams = params ?? {}
+  const parts = Object.keys(safeParams)
+    .filter((k) => safeParams[k] !== undefined && safeParams[k] !== null)
+    .map((k) => `${encodeURIComponent(k)}=${encodeURIComponent(String(safeParams[k]))}`)
   return parts.length > 0 ? `?${parts.join('&')}` : ''
 }
 

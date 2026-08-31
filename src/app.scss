@@ -1,0 +1,36 @@
+// Taro 4 H5 端不注入自定义元素默认样式（taro-view-core/taro-app-root 默认 inline），
+// 导致无 flex 上下文时 View 的 width/height 不生效、页面容器宽度异常，这里补上块级默认
+// 仅 H5 生效：小程序端无此自定义元素
+@media (min-width: 0px) {
+  taro-app-root,
+  taro-view-core {
+    display: block;
+  }
+}
+
+// NutUI 主题：不引入 theme-default.scss（其 :root 变量定义会被 H5 pxtransform 转换导致组件缩半），
+// 组件样式全部走 var(--nutui-xxx, fallback) 默认值，品牌色由下方定制块覆盖
+// 品牌色定制：对齐项目主色（DeepSeek 蓝 #3964FE）
+// :root 作用于 H5，page 作用于小程序
+:root,
+page {
+  --nutui-brand-1: #edf3fe;
+  --nutui-brand-2: #dbe6ff;
+  --nutui-brand-3: #b7c8fe;
+  --nutui-brand-4: #8aa7fe;
+  --nutui-brand-5: #5580ff;
+  --nutui-brand-6: #3964fe;
+  --nutui-brand-7: #2e52d6;
+  --nutui-brand-8: #1f3fae;
+  --nutui-brand-9: #142c86;
+  --nutui-brand-10: #0a1a5e;
+  --nutui-brand-stop-1: #5580ff;
+  --nutui-brand-stop-2: #3964fe;
+  --nutui-color-primary: var(--nutui-brand-6);
+  --nutui-color-primary-stop-1: var(--nutui-brand-stop-1);
+  --nutui-color-primary-stop-2: var(--nutui-brand-stop-2);
+  --nutui-color-primary-pressed: var(--nutui-brand-7);
+  --nutui-color-primary-disabled: var(--nutui-brand-3);
+  --nutui-color-primary-light: var(--nutui-brand-1);
+  --nutui-color-primary-light-pressed: var(--nutui-brand-2);
+}

@@ -7,11 +7,13 @@
 declare global {
   interface RouteMap {
     '/pages/index/index': undefined
+    '/pages/chat/index': undefined
     '/pages/detail/index': {
       id: string
       name?: string
       from?: string
     }
+    '/pages/nutui-demo/index': undefined
   }
 
   type RoutePath = keyof RouteMap
